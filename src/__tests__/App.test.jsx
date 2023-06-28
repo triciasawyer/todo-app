@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Header from '../Components/Header';
-import Todo from '../Components/Todo';
 
 describe('Header Component Tests', ()  => {
   test('render a header element as expected', () => {
@@ -15,5 +14,5 @@ describe('Header Component Tests', ()  => {
     expect(navbar).toHaveTextContent('Home');
   });
 
-  
+
 });
