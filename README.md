@@ -4,6 +4,8 @@
 
 ## UML
 
+![UML](./assets/lab31-UML.png)
+
 ## Live deployment
 
 [Code sandbox](https://37pthk-3000.csb.app/)

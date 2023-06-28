@@ -1,0 +1,58 @@
+body {
+    background-color: rgb(244, 246, 249);
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 350px;
+    height: 290px;
+    text-align: center;
+    border: 2px solid black;
+    margin-top: 7rem;
+    margin-left: 10rem;
+    padding-bottom: 10px;
+}
+
+.todo-header {
+    margin-top: 40px;
+    width: 420px;
+    height: 30px;
+    text-align: center;
+    margin-left: 500px;
+    color: rgb(10, 10, 10);
+    padding-bottom: 50px;
+}
+
+.form label {
+    margin: 10px;
+}
+
+form input {
+    margin-left: 10px;
+    color: whitesmoke;
+}
+
+.added-item {
+    background-color: rgb(15, 182, 65);
+    padding-left: 20px;
+    padding-top: .5px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: 300px;
+    // position: absolute;
+    // top: 20%;
+    // right: 20%;
+}
+
+// .form-and-results {
+//     display: flex;
+//     flex-direction: row;
+//     height: 30rem;
+//     border: 2px solid blue;
+//     margin-top: 5rem;
+// }

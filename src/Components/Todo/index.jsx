@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useForm from '../../Hooks/form';
 
 import { v4 as uuid } from 'uuid';
+import './todo.scss'
 // import Header from '../Header';
 // import Footer from '../Footer';
 // import List from '../List';
@@ -52,12 +53,13 @@ const Todo = () => {
 
   return (
     <>
-      <header data-testid="todo-header">
+      <header className='todo-header'>
         <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
       </header>
 
       {/* leave the form code inside of the Todo Component */}
-      <form onSubmit={handleSubmit}>
+      {/* <section className='form-and-results'> */}
+      <form className="form" onSubmit={handleSubmit}>
 
         <h2>Add To Do Item</h2>
 
@@ -82,7 +84,7 @@ const Todo = () => {
       </form>
 
       {list.map(item => (
-        <div key={item.id}>
+        <div className='added-item' key={item.id}>
           <p>{item.text}</p>
           <p><small>Assigned to: {item.assignee}</small></p>
           <p><small>Difficulty: {item.difficulty}</small></p>
