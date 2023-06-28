@@ -29,8 +29,8 @@ const useStyles = createStyles((theme)=> ({
 function Header() {
   const { classes } = useStyles();
   return (
-    <header>
-      <Navbar className={classes.navbar}>
+    <header data-testid="header">
+      <Navbar data-testid="navbar" className={classes.navbar}>
         <Text>Home</Text>
       </Navbar>
     </header>

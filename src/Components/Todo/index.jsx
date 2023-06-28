@@ -57,26 +57,26 @@ const Todo = () => {
         <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
 
       {/* leave the form code inside of the Todo Component */}
-      <form className="form" onSubmit={handleSubmit}>
+      <form data-testid="form" onSubmit={handleSubmit}>
 
-        <h2>Add To Do Item</h2>
+        <h2 data-testid="todo-h2">Add To Do Item</h2>
 
-        <label>
+        <label data-testid="todo-label1">
           <span>To Do Item</span>
           <input onChange={handleChange} name="text" type="text" placeholder="Item Details" />
         </label>
 
-        <label>
+        <label data-testid="todo-label2">
           <span>Assigned To</span>
           <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
         </label>
 
-        <label>
+        <label data-testid="todo-label3">
           <span>Difficulty</span>
           <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
         </label>
 
-        <label>
+        <label data-testid="todo-label-button">
           <button type="submit">Add Item</button>
         </label>
       </form>
