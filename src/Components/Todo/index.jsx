@@ -4,10 +4,6 @@ import useForm from '../../hooks/form';
 import { v4 as uuid } from 'uuid';
 import './todo.scss'
 import List from '../List';
-// import Header from '../Header';
-// import Footer from '../Footer';
-// import List from '../List';
-
 
 const Todo = () => {
 
@@ -26,7 +22,7 @@ const Todo = () => {
   }
 
   function deleteItem(id) {
-    const items = list.filter( item => item.id !== id );
+    const items = list.filter( item => item.id !== id);
     setList(items);
   }
 
@@ -51,6 +47,7 @@ const Todo = () => {
     // disable code used to avoid linter warning 
     // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, [list]);  
+
 
   return (
     <>
@@ -81,9 +78,7 @@ const Todo = () => {
         </label>
       </form>
 
-
        <List toggleComplete={toggleComplete} list={list} />
-
 
     </>
   );
