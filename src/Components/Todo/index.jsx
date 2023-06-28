@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useForm from '../../Hooks/form';
+import useForm from '../../hooks/form';
 
 import { v4 as uuid } from 'uuid';
 import './todo.scss'
@@ -53,12 +53,9 @@ const Todo = () => {
 
   return (
     <>
-      <header className='todo-header'>
         <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
-      </header>
 
       {/* leave the form code inside of the Todo Component */}
-      {/* <section className='form-and-results'> */}
       <form className="form" onSubmit={handleSubmit}>
 
         <h2>Add To Do Item</h2>

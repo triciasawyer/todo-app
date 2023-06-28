@@ -21,6 +21,8 @@ NOTE: The expectation to style this entire component in one day is likely unreal
 
 [Code sandbox deployment](https://37pthk-3000.csb.app/)
 
+[Mantine theming doc](https://mantine.dev/theming/colors/)
+
 ### Collaborators
 
 Ryan Gallaway in code review
