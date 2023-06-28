@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form';
 
 import { v4 as uuid } from 'uuid';
-import './todo.scss'
 import List from '../List';
 
 const Todo = () => {
