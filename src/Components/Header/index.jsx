@@ -22,8 +22,6 @@ const useStyles = createStyles((theme)=> ({
     color: theme.colors.gray[0],
     fontSize: theme.fontSizes.md,
     padding: theme.spacing.md,
-    margin: 0,
-    // get rid of gutter
   }
 }));
 

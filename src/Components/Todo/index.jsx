@@ -3,6 +3,7 @@ import useForm from '../../hooks/form';
 
 import { v4 as uuid } from 'uuid';
 import './todo.scss'
+import List from '../List';
 // import Header from '../Header';
 // import Footer from '../Footer';
 // import List from '../List';
@@ -80,15 +81,9 @@ const Todo = () => {
         </label>
       </form>
 
-      {list.map(item => (
-        <div className='added-item' key={item.id}>
-          <p>{item.text}</p>
-          <p><small>Assigned to: {item.assignee}</small></p>
-          <p><small>Difficulty: {item.difficulty}</small></p>
-          <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
-          <hr />
-        </div>
-      ))}
+
+       <List toggleComplete={toggleComplete} list={list} />
+
 
     </>
   );
