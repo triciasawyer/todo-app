@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
-// create context ------
 export const SettingsContext = React.createContext();
 
-// create provider
 function SettingsProvider({ children }){
     const [displayCount, setDisplayCount] = useState(3);
     const [showComplete, setShowComplete] = useState(false);
