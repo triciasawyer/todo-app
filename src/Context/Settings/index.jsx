@@ -10,8 +10,12 @@ function SettingsProvider({ children }){
     const values = {
         displayCount,
         showComplete,
-        sort
+        sort,
+        setDisplayCount,
+        setShowComplete,
+        setSort,
     }
+    
     return (
         <SettingsContext.Provider value={values}>
             {children}

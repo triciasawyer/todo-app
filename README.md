@@ -44,6 +44,8 @@ Retrieve their preferences from Local Storage and apply them to the application 
 
 [Mantine theming doc](https://mantine.dev/theming/colors/)
 
+[Tabler icons](https://tabler.io/icons)
+
 ### Collaborators
 
 Ryan Gallaway in code review
