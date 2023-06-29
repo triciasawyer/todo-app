@@ -40,6 +40,8 @@ Retrieve their preferences from Local Storage and apply them to the application 
 
 [Code sandbox deployment](https://37pthk-3000.csb.app/)
 
+[Code sandbox deployment - branch for lab 32](https://3zlv3x-3000.csb.app/)
+
 [Mantine theming doc](https://mantine.dev/theming/colors/)
 
 ### Collaborators
