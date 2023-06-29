@@ -1,7 +1,8 @@
-import { useContext } from "react";
-import { SettingsContext } from "../../Context/Settings";
-import { createStyles, Grid, NumberInput, TextInput, Text, Switch } from "@mantine/core";
-import { IconSettings } from "@tabler/icons-react";
+import { useContext, useState } from 'react';
+import { SettingsContext } from '../../Context/Settings';
+import { Button, createStyles, Grid, NumberInput, TextInput, Text, Switch } from "@mantine/core";
+import { IconSettings } from '@tabler/icons-react';
+import { When } from 'react-if';
 
 const useStyles = createStyles((theme) => ({
     h1: {
@@ -17,6 +18,7 @@ const useStyles = createStyles((theme) => ({
 
 function SettingsForm() {
     const { classes } = useStyles();
+    const [show, setShow] = useState(false);
     const {
         displayCount,
         showComplete,
@@ -24,10 +26,14 @@ function SettingsForm() {
         setDisplayCount,
         setShowComplete,
         setSort,
+        saveLocally,
     } = useContext(SettingsContext);
     console.log({sort}, {showComplete}, {displayCount});
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        saveLocally();
+        setShow(true);
+        e.target.reset();
     }
 
     return (
@@ -52,9 +58,17 @@ function SettingsForm() {
                             label="Sort Keyword"
                             onChange={(e) => setSort(e.currentTarget.value)}
                         />
+                        <Button type="submit" style={{margin: 5}}>Show New Settings</Button>
                     </form>
                 </Grid.Col>
-                <Grid.Col span={6}></Grid.Col>
+                <Grid.Col span={6}>
+                    <When condition={show}>
+                <Text fontSize="xl" weight="bold">Update Settings</Text>
+                <Text>{showComplete ? 'Show' : 'Hide'} Completed Todos</Text>
+                <Text>Items Per Page: {displayCount}</Text>
+                <Text>Sort Keyword: {sort}</Text>
+                </When>
+                </Grid.Col>
             </Grid>
         </>
     )
