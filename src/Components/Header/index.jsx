@@ -1,5 +1,5 @@
-import { createStyles, Navbar, Text } from "@mantine/core";
-// import { Link } from 'react-router-dom';
+import { createStyles, Navbar } from "@mantine/core";
+import { Link } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -10,6 +10,7 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.md,
     display: 'flex',
     flexDirection: 'row',
+    textDecoration: 'none',
     // justifyContent: 'space-between'
   }
 }));
@@ -17,15 +18,14 @@ const useStyles = createStyles((theme) => ({
 
 function Header() {
   const { classes } = useStyles();
+
   return (
-    <header data-testid="header">
+    <>
       <Navbar data-testid="navbar" className={classes.navbar}>
-        {/* <Link to="/">Home</Link>
-    <Link to="/settings">Settings</Link> */}
-        <Text>Home</Text>
-        <Text>Settings</Text>
+        <Link to="/">Home</Link>
+        <Link to="/settings">Settings</Link>
       </Navbar>
-    </header>
+    </>
   )
 }
 
