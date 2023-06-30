@@ -18,26 +18,25 @@ function Login() {
         <>
             <If condition={isLoggedIn}>
                 <Then>
-                    <Button color='red' onClick={handleLogout}>Log Out</Button>
+                    <Button color="red" onClick={handleLogout}>Log Out</Button>
                 </Then>
                 <Else>
                     <Group>
-                    <TextInput
-                    placeholder="Username"
-                    onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <TextInput
-                    placeholder="Password"
-                    type='password'
-                    onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button color='gray.8' onClick={() => login(username, password)}>Log In</Button>
+                        <TextInput
+                            placeholder="Username"
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <TextInput
+                            placeholder="Password"
+                            type="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <Button color="gray.8" onClick={() => login(username, password)}>Log In</Button>
                     </Group>
                 </Else>
-            </If>        
+            </If>
         </>
     )
-
 }
 
 export default Login;

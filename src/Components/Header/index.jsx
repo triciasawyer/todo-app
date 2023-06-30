@@ -7,37 +7,29 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colors.blue[7],
     height: '100%',
     padding: theme.spacing.md,
-    display: 'flex',
-    flexFlow: 'row wrap',
-    gap: '10px',
-    boxSizing: 'border-box',
   },
   link: {
     color: theme.colors.gray[0],
     fontSize: theme.fontSizes.md,
+    textDecoration: 'none',
   }
 }));
 
 function Header() {
   const { classes } = useStyles();
 
-  const linkStyle = {
-    textDecoration: 'none',
-    color: 'inherit',
-  };
-
   return (
     <>
-    <header>
-      <Navbar data-testid="navbar" className={classes.navbar}>
-      <Group position='apart'>
-      <Group>
-        <Link to="/" style={linkStyle}>Home</Link>
-        <Link to="/settings" style={linkStyle}>Settings</Link>
-        </Group>
-        <Login />
-        </Group>
-      </Navbar>
+      <header>
+        <Navbar data-testid="navbar" className={classes.navbar}>
+          <Group position="apart">
+            <Group>
+              <Link to="/" className={classes.link}>Home</Link>
+              <Link to="/settings" className={classes.link}>Settings</Link>
+            </Group>
+            <Login />
+          </Group>
+        </Navbar>
       </header>
     </>
   )

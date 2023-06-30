@@ -11,10 +11,10 @@ root.render(
   <React.StrictMode>
     <MantineProvider withGlobalStyles withNormalizeCSS>
       <AuthProvider>
-    <SettingsProvider>
-      <App />
-    </SettingsProvider>
-    </AuthProvider>
+        <SettingsProvider>
+          <App />
+        </SettingsProvider>
+      </AuthProvider>
     </MantineProvider>
   </React.StrictMode>
 );

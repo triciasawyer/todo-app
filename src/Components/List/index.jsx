@@ -25,6 +25,7 @@ function List({ list, toggleComplete, deleteItem }) {
     return (
         <>
             {displayList.map(item => (
+                
                 <Card mb='sm' shadow='mad' withBorder key={item.id}>
                     <Card.Section withBorder>
                         <Group position="apart">
@@ -57,6 +58,7 @@ function List({ list, toggleComplete, deleteItem }) {
                                     title="Close ToDo item"
                                 />
                             </Auth>
+                            <hr />
                         </Group>
                     </Card.Section>
                     <Text mt="sm" align="left">{item.text}</Text>
