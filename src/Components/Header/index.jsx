@@ -1,41 +1,41 @@
-// import React from 'react';
-// import { Header } from '@mantine/core';
-// // import './header.scss'
-// function HeaderComponent() {
-  
-//   return (
-//     <Header height={60} p="xs">
-//     Home
-//     </Header >
+import { createStyles, Navbar } from "@mantine/core";
+import { Link } from 'react-router-dom';
 
-//   )
-// }
-
-// export default HeaderComponent;
-
-import { createStyles, Navbar, Text } from "@mantine/core";
-
-const useStyles = createStyles((theme)=> ({
+const useStyles = createStyles((theme) => ({
   navbar: {
     backgroundColor: theme.colors.blue[7],
     height: '100%',
     color: theme.colors.gray[0],
     fontSize: theme.fontSizes.md,
     padding: theme.spacing.md,
-  }
+    display: 'flex',
+    flexFlow: 'row wrap',
+    gap: '10px',
+    boxSizing: 'border-box',
+  },
 }));
 
 
 function Header() {
   const { classes } = useStyles();
+
+  const linkStyle = {
+    textDecoration: 'none',
+    color: 'inherit',
+  };
+
   return (
-    <header data-testid="header">
+    <>
       <Navbar data-testid="navbar" className={classes.navbar}>
-        <Text>Home</Text>
+      <span className={classes.link}>
+        <Link to="/" style={linkStyle}>Home</Link>
+        </span>
+        <span className={classes.link}>
+        <Link to="/settings" style={linkStyle}>Settings</Link>
+        </span>
       </Navbar>
-    </header>
+    </>
   )
 }
-
 
 export default Header;
