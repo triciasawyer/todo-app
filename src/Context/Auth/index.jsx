@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import testUsers from './lib/users';
 import jwt_decode from "jwt-decode";
 import cookie from 'react-cookies';
 
 export const AuthContext = React.createContext();
 
-// useEffect to load cookie here!!
 
 function AuthProvider({ children }){
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useState({});
     const [error, setError] = useState(null);
+
+    useEffect(() => {
+        let cookieToken = cookie.load('auth')
+        _validateToken(cookieToken);
+    }, []);
 
     const _validateToken = (token) => {
         try {
