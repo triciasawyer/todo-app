@@ -9,21 +9,30 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.md,
     padding: theme.spacing.md,
     display: 'flex',
-    flexDirection: 'row',
-    textDecoration: 'none',
-    // justifyContent: 'space-between'
-  }
+    flexFlow: 'row wrap',
+    gap: '10px',
+    boxSizing: 'border-box',
+  },
 }));
 
 
 function Header() {
   const { classes } = useStyles();
 
+  const linkStyle = {
+    textDecoration: 'none',
+    color: 'inherit',
+  };
+
   return (
     <>
       <Navbar data-testid="navbar" className={classes.navbar}>
-        <Link to="/">Home</Link>
-        <Link to="/settings">Settings</Link>
+      <span className={classes.link}>
+        <Link to="/" style={linkStyle}>Home</Link>
+        </span>
+        <span className={classes.link}>
+        <Link to="/settings" style={linkStyle}>Settings</Link>
+        </span>
       </Navbar>
     </>
   )
