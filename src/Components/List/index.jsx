@@ -5,12 +5,13 @@ import Auth from '../Auth';
 import { Else, If, Then } from 'react-if';
 import { AuthContext } from '../../Context/Auth';
 
+
 function List({ list, toggleComplete, deleteItem }) {
     const { isLoggedIn, can } = useContext(AuthContext);
     const {
         displayCount,
         showComplete,
-        sort,
+        // sort,
     } = useContext(SettingsContext);
     const [activePage, setPage] = useState(1);
 
@@ -20,13 +21,12 @@ function List({ list, toggleComplete, deleteItem }) {
     const listStart = displayCount * (activePage - 1);
     const listEnd = listStart + displayCount;
     const displayList = renderableList.slice(listStart, listEnd);
-
+    // const { classes } = useStyles();
 
     return (
         <>
             {displayList.map(item => (
-                
-                <Card mb='sm' shadow='mad' withBorder key={item.id}>
+                <Card mb='sm' shadow='mad' padding="lg" withBorder key={item.id}>
                     <Card.Section withBorder>
                         <Group position="apart">
                             <Group>

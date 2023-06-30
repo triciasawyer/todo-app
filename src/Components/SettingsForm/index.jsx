@@ -13,6 +13,11 @@ const useStyles = createStyles((theme) => ({
         margin: 'auto',
         padding: theme.spacing.md,
         marginTop: theme.spacing.md,
+        marginBottom: theme.spacing.md,
+    },
+    settings: {
+        fontWeight: '400',
+        fontSize: theme.fontSizes.sm,
     }
 }));
 
@@ -28,6 +33,7 @@ function SettingsForm() {
         setSort,
         saveLocally,
     } = useContext(SettingsContext);
+    
     console.log({ sort }, { showComplete }, { displayCount });
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -49,16 +55,19 @@ function SettingsForm() {
                                 onChange={(e) => setShowComplete(e.currentTarget.checked)}
                                 label="Show Completed ToDos"
                                 m='xs'
+                                className={classes.settings}
                             />
                             <NumberInput
                                 value={displayCount}
                                 label="Items Per Page"
                                 onChange={setDisplayCount}
+                                className={classes.settings}
                             />
                             <TextInput
                                 placeholder={sort}
                                 label="Sort Keyword"
                                 onChange={(e) => setSort(e.currentTarget.value)}
+                                className={classes.settings}
                             />
                             <Button mt='sm' type="submit" style={{ margin: 10 }}>Show New Settings</Button>
                         </form>

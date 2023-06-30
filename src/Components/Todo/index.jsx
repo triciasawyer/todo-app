@@ -1,13 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../Hooks/form';
 import Auth from '../Auth';
-
 import { v4 as uuid } from 'uuid';
 import List from '../List';
-import { Card, Grid } from '@mantine/core';
+import { Card, Grid, createStyles } from '@mantine/core';
+
+const useStyles = createStyles((theme) => ({
+  h1: {
+    backgroundColor: theme.colors.gray[8],
+    width: '80%',
+    color: 'white',
+    fontSize: '20px',
+    fontWeight: 'bold',
+    // fontFamily: 'apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
+    margin: '16px auto',
+    padding: '16px',
+  },
+  labels: {
+    display: 'flex',
+    padding: '10px',
+  },
+  placeholder: {
+    marginLeft: '5px'
+  }
+}));
+
 
 const Todo = () => {
-
+  const { classes } = useStyles();
   const [defaultValues] = useState({
     difficulty: 4,
   });
@@ -40,6 +60,7 @@ const Todo = () => {
 
   }
 
+
   useEffect(() => {
     let incompleteCount = list.filter(item => !item.complete).length;
     setIncomplete(incompleteCount);
@@ -52,30 +73,30 @@ const Todo = () => {
 
   return (
     <>
-      <h1 data-testid="todo-h1">To Do List: {incomplete} items pending</h1>
+      <h1 data-testid="todo-h1" className={classes.h1}>To Do List: {incomplete} items pending</h1>
       <Grid style={{ width: '80%', margin: 'auto' }}>
-        <Grid.Col xs={12} sm={4}>
+        <Grid.Col  xs={12} sm={4}>
 
           {/* leave the form code inside of the Todo Component */}
-          <Auth capability={'create'}>
-            <Card withBorder>
-              <form data-testid="form" onSubmit={handleSubmit}>
+          <Auth capability="create">
+            <Card shadow="sm" padding="lg" radius="md" withBorder>
+              <form  data-testid="form" onSubmit={handleSubmit}>
 
-                <h2 data-testid="todo-h2">Add To Do Item</h2>
+                <h2 data-testid="todo-h2">Add To Do Item </h2>
 
-                <label data-testid="todo-label1">
+                <label data-testid="todo-label1" className={classes.labels}>
                   <span>To Do Item</span>
-                  <input onChange={handleChange} name="text" type="text" placeholder="Item Details" />
+                  <input className={classes.placeholder} onChange={handleChange} name="text" type="text" placeholder="Item Details" />
                 </label>
 
-                <label data-testid="todo-label2">
-                  <span>Assigned To</span>
-                  <input onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
+                <label data-testid="todo-label2" className={classes.labels}>
+                  <span>Assigned To </span>
+                  <input className={classes.placeholder} onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
                 </label>
 
-                <label data-testid="todo-label3">
+                <label data-testid="todo-label3" className={classes.labels}>
                   <span>Difficulty</span>
-                  <input onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
+                  <input className={classes.placeholder} onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
                 </label>
 
                 <label data-testid="todo-label-button">
@@ -86,14 +107,13 @@ const Todo = () => {
           </Auth>
         </Grid.Col>
         <Grid.Col xs={12} sm={4}>
-        <Card shadow="sm" padding="lg" radius="md" withBorder >
-          <List
-            toggleComplete={toggleComplete}
-            deleteItem={deleteItem}
-            list={list} />
-            </Card>
+          <Card shadow="sm" padding="lg" radius="md" withBorder >
+            <List
+              toggleComplete={toggleComplete}
+              deleteItem={deleteItem}
+              list={list} />
+          </Card>
         </Grid.Col>
-
       </Grid>
     </>
   );
