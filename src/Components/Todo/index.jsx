@@ -57,7 +57,7 @@ const Todo = () => {
         <Grid.Col xs={12} sm={4}>
 
           {/* leave the form code inside of the Todo Component */}
-          <Auth capabilities='create'>
+          <Auth capability={'create'}>
             <Card withBorder>
               <form data-testid="form" onSubmit={handleSubmit}>
 
@@ -86,10 +86,12 @@ const Todo = () => {
           </Auth>
         </Grid.Col>
         <Grid.Col xs={12} sm={4}>
+        <Card shadow="sm" padding="lg" radius="md" withBorder >
           <List
             toggleComplete={toggleComplete}
             deleteItem={deleteItem}
             list={list} />
+            </Card>
         </Grid.Col>
 
       </Grid>

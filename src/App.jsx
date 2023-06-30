@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Todo from './Components/Todo';
 import Header from './Components/Header'
 import Footer from './Components/Footer'
@@ -13,7 +12,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <Auth capability='read'>
+        <Auth capability="read">
           <Routes>
             <Route path="/" element={<Todo />} />
             <Route path="/settings" element={<SettingsForm />} />
