@@ -1,15 +1,19 @@
 import { useContext, useState } from 'react';
 import { SettingsContext } from '../../Context/Settings'
-import { Pagination } from '@mantine/core';
+import { Badge, Card, CloseButton, Text, Group, Pagination } from '@mantine/core';
+import Auth from '../Auth';
+import { Else, If, Then } from 'react-if';
+import { AuthContext } from '../../Context/Auth';
 
-function List({ list, toggleComplete }) {
+function List({ list, toggleComplete, deleteItem }) {
+    const { isLoggedIn, can } = useContext(AuthContext);
     const {
         displayCount,
         showComplete,
-        sort
+        sort,
     } = useContext(SettingsContext);
     const [activePage, setPage] = useState(1);
-    
+
     const renderableList = showComplete ? list : list.filter(item => !item.complete);
     const pageCount = Math.ceil(renderableList.length / displayCount);
 
@@ -21,13 +25,43 @@ function List({ list, toggleComplete }) {
     return (
         <>
             {displayList.map(item => (
-                <div key={item.id}>
-                    <p>{item.text}</p>
-                    <p><small>Assigned to: {item.assignee}</small></p>
-                    <p><small>Difficulty: {item.difficulty}</small></p>
-                    <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
-                    <hr />
-                </div>
+                <Card mb='sm' shadow='mad' withBorder key={item.id}>
+                    <Card.Section withBorder>
+                        <Group position="apart">
+                            <Group>
+                                <If condition={isLoggedIn && can('update')}>
+                                    <Then>
+                                        <Badge
+                                            onClick={() => toggleComplete(item.id)}
+                                            color={item.complete ? 'red' : 'green'}
+                                            variant="filled"
+                                            m="3px"
+                                        >
+                                            {item.complete ? 'Complete' : 'Pending'}
+                                        </Badge>
+                                    </Then>
+                                    <Else>
+                                        <Badge
+                                            color={item.complete ? 'red' : 'green'}
+                                            variant="filled"
+                                            m="3px">
+                                            {item.complete ? 'complete' : 'Pending'}
+                                        </Badge>
+                                    </Else>
+                                </If>
+                                <Text>{item.assignee}</Text>
+                            </Group>
+                            <Auth capability="delete">
+                                <CloseButton
+                                    onClick={() => deleteItem(item.id)}
+                                    title="Close ToDo item"
+                                />
+                            </Auth>
+                        </Group>
+                    </Card.Section>
+                    <Text mt="sm" align="left">{item.text}</Text>
+                    <Text align="right"><small>Difficulty: {item.difficulty}</small></Text>
+                </Card>
             ))}
             <Pagination value={activePage} onChange={setPage} total={pageCount} />
         </>
