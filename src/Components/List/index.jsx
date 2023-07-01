@@ -56,6 +56,7 @@ function List({ list, toggleComplete, deleteItem }) {
                                 <CloseButton
                                     onClick={() => deleteItem(item.id)}
                                     title="Close ToDo item"
+                                    data-testid="closeToDo"
                                 />
                             </Auth>
                             <hr />

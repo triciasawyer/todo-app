@@ -6,6 +6,9 @@ const useStyles = createStyles((theme) => ({
     width: '80%',
     margin: 'auto',
     // marginTop: '50px',
+    '&.footer': {
+      // Add any additional styles for the 'footer' class here
+    },
   }
 }));
 
