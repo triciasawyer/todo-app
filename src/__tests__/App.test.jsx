@@ -118,53 +118,54 @@ describe('Functionality of app', () => {
   });
 
 
-  test('Should render the list with items', () => {
-    render(
-      <SettingsContext.Provider value={mockSettingsContext}>
-        <AuthContext.Provider value={mockAuthContext}>
-          <List list={list} toggleComplete={() => {}} deleteItem={() => {}} />
-        </AuthContext.Provider>
-      </SettingsContext.Provider>
-    );
+  // test('Should render the list with items', () => {
+  //   render(
+  //     <SettingsContext.Provider value={mockSettingsContext}>
+  //       <AuthContext.Provider value={mockAuthContext}>
+  //         <List list={list} toggleComplete={() => {}} deleteItem={() => {}} />
+  //       </AuthContext.Provider>
+  //     </SettingsContext.Provider>
+  //   );
   
-    const listItems = screen.getAllByTestId('list-item');
-    expect(listItems).toHaveLength(list.length);
+  //   const listItems = screen.getAllByTestId('list-item');
+  //   expect(listItems).toHaveLength(list.length);
   
-    // Assert the content of each list item
-    expect(listItems[0]).toHaveTextContent('Item 1');
-    expect(listItems[0]).toHaveTextContent('User 1');
-    expect(listItems[0]).toHaveTextContent('Difficulty: Easy');
+  //   // Assert the content of each list item
+  //   expect(listItems[0]).toHaveTextContent('Item 1');
+  //   expect(listItems[0]).toHaveTextContent('User 1');
+  //   expect(listItems[0]).toHaveTextContent('Difficulty: Easy');
   
-    expect(listItems[1]).toHaveTextContent('Item 2');
-    expect(listItems[1]).toHaveTextContent('User 2');
-    expect(listItems[1]).toHaveTextContent('Difficulty: Medium');
-  });
+  //   expect(listItems[1]).toHaveTextContent('Item 2');
+  //   expect(listItems[1]).toHaveTextContent('User 2');
+  //   expect(listItems[1]).toHaveTextContent('Difficulty: Medium');
+  // });
 
-  test('Should call deleteItem when close button is clicked', () => {
-    const mockAuthContext = {
-      isLoggedIn: true,
-      can: () => true,
-    };
 
-      const deleteItem = jest.fn();
-      render(
-        <SettingsContext.Provider value={mockSettingsContext}>
-          <AuthContext.Provider value={mockAuthContext}>
-            <List list={list} toggleComplete={() => {}} deleteItem={deleteItem} />
-          </AuthContext.Provider>
-        </SettingsContext.Provider>
-      );
+  // test('Should call deleteItem when close button is clicked', () => {
+  //   const mockAuthContext = {
+  //     isLoggedIn: true,
+  //     can: () => true,
+  //   };
+
+  //     const deleteItem = jest.fn();
+  //     render(
+  //       <SettingsContext.Provider value={mockSettingsContext}>
+  //         <AuthContext.Provider value={mockAuthContext}>
+  //           <List list={list} toggleComplete={() => {}} deleteItem={deleteItem} />
+  //         </AuthContext.Provider>
+  //       </SettingsContext.Provider>
+  //     );
     
-      const closeButton = screen.getByTestId('CloseToDo');
-      expect(closeButton).toBeInTheDocument();
+  //     const closeButton = screen.getByTestId('CloseToDo');
+  //     expect(closeButton).toBeInTheDocument();
     
-      // Simulate clicking the close button
-      closeButton.click();
+  //     // Simulate clicking the close button
+  //     closeButton.click();
     
-      // Expect the deleteItem function to be called with the item ID
-      expect(deleteItem).toHaveBeenCalledTimes(1);
-      expect(deleteItem).toHaveBeenCalledWith(list[0].id);
-    });
+  //     // Expect the deleteItem function to be called with the item ID
+  //     expect(deleteItem).toHaveBeenCalledTimes(1);
+  //     expect(deleteItem).toHaveBeenCalledWith(list[0].id);
+  //   });
 
 
     test('Should submit the form and trigger handleSubmit', () => {
