@@ -80,7 +80,7 @@ Be sure to store the token in state as well as in a cookie so you can reference 
 
 ### Collaborators
 
-Ryan Gallaway in code review and chat gpt to help write tests.
+Ryan Gallaway in code review and chat gpt to help write tests and debug some issues I was having.
 
 ### UML
 
