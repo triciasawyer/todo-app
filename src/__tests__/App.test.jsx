@@ -6,11 +6,10 @@ import AuthProvider, { AuthContext } from '../Context/Auth';
 import Login from '../Components/Login';
 import { BrowserRouter } from 'react-router-dom';
 import SettingsProvider, { SettingsContext } from '../Context/Settings';
-import { List } from '@mantine/core';
+// import { List } from '@mantine/core';
 import SettingsForm from '../Components/SettingsForm';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 
 const mockAuthContext = {
   logout: jest.fn(),
