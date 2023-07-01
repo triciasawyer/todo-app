@@ -1,4 +1,4 @@
-# Lab 31-33
+# Lab 31-34
 
 ## Project: Context API
 
@@ -51,6 +51,22 @@ As a user, I want to ensure that only fellow users that are allowed to “create
 As a user, I want to ensure that only fellow users that are allowed to “update”, based on their user type, can mark To Do Items complete.
 
 As a user, I want to ensure that only fellow users that are allowed to “delete”, based on their user type, can delete new To Do Items.
+
+- Lab 34 features
+
+In Phase 4, we will finalize the functionality of the application by connecting to live servers for login, authorization, and data access.
+
+Technical Requirements / Notes
+Technical requirements for the core application are unchanged from the prior phases, with the addition of Performing actual HTTP requests with an Authenticated API server:
+
+Alter the Add, Toggle Complete, and Delete functions within your to do application to use your API instead of in memory state.
+Fetch the current list of items from the database on application start.
+Whenever you add/update/delete an item, refresh the state so the user can instantly see the change.
+Consider: Do you re-fetch from the server every time you make a change?
+If so, how?
+If not, how will you stay in sync?
+Alter the Login Context to use the server to login users instead of our mock users list.
+Be sure to store the token in state as well as in a cookie so you can reference it later.
 
 ### Links and Resources
 
