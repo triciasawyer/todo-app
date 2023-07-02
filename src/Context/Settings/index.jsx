@@ -11,14 +11,7 @@ function SettingsProvider({ children }) {
         localStorage.setItem('todo', JSON.stringify({ displayCount, showComplete, sort }));
     }
 
-    // useEffect(() => {
-    //     let storage = JSON.parse(localStorage.getItem('todo'));
-    //     if (storage) {
-    //         setDisplayCount(storage.displayCount);
-    //         setSort(storage.sort);
-    //         setShowComplete(storage.showComplete);
-    //     }
-    // }, []);
+    
     useEffect(() => {
         let storage = localStorage.getItem('todo');
         if (storage) {
