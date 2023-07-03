@@ -70,7 +70,7 @@ Be sure to store the token in state as well as in a cookie so you can reference 
 
 ### Links and Resources
 
-[Code sandbox deployment](https://37pthk-3000.csb.app/)
+[Code sandbox deployment](https://56gqkc-3000.csb.app/)
 
 [Mantine theming doc](https://mantine.dev/theming/colors/)
 
