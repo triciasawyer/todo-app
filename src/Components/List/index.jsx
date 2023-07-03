@@ -11,7 +11,7 @@ function List({ list, toggleComplete, deleteItem }) {
     const {
         displayCount,
         showComplete,
-        sort
+        // sort
     } = useContext(SettingsContext);
     const [activePage, setPage] = useState(1);
 

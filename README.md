@@ -72,15 +72,13 @@ Be sure to store the token in state as well as in a cookie so you can reference 
 
 [Code sandbox deployment](https://37pthk-3000.csb.app/)
 
-[Code sandbox deployment - branch for lab 32](https://3zlv3x-3000.csb.app/)
-
 [Mantine theming doc](https://mantine.dev/theming/colors/)
 
 [Tabler icons](https://tabler.io/icons)
 
 ### Collaborators
 
-Ryan Gallaway in code review and chat gpt to help write tests and debug some issues I was having.
+Ryan Gallaway in code review for all labs, really helpful! I also used chat gpt to help write some of the tests and debug some issues I was having.
 
 ### UML
 
