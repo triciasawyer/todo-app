@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import testUsers from './lib/users';
 import jwt_decode from "jwt-decode";
 import cookie from 'react-cookies';
 import axios from 'axios';
@@ -13,10 +12,12 @@ function AuthProvider({ children }){
     const [user, setUser] = useState({});
     const [error, setError] = useState(null);
 
+
     useEffect(() => {
         let cookieToken = cookie.load('auth')
         _validateToken(cookieToken);
     }, []);
+
 
     const _validateToken = (token) => {
         try {
@@ -31,21 +32,20 @@ function AuthProvider({ children }){
             setError(err);
             console.log(err);
         }
-    };
+    }
 
     const login = async (username, password) => {
         let config = {
           baseURL: 'https://api-js401.herokuapp.com',
           url: '/signin',
           method: 'post',
-          auth: { username, password },
+          auth: {username, password},
         }
         let response = await axios(config);
-        console.log('user---------', response.data);
-        let token = response.data.token
-        if (token){
+        let user = response.data;
+        if (user){
           try {
-            _validateToken(token)
+            _validateToken(user.token)
           } catch(err){
             setError(err);
             console.log(err);
@@ -57,11 +57,14 @@ function AuthProvider({ children }){
     const logout = () => {
         setUser({});
         setIsLoggedIn(false);
+        cookie.remove('auth');
     }
 
+
     const can = (capability) => {
-        return user?.capabilities?.includes(capability);
+        return user?.capabilities?.includes(capability)
     }
+
 
     const values = {
         isLoggedIn,
@@ -78,5 +81,6 @@ function AuthProvider({ children }){
         </AuthContext.Provider>
     )
 }
+
 
 export default AuthProvider;

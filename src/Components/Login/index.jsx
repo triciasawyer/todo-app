@@ -23,11 +23,12 @@ function Login() {
                 <Else>
                     <Group>
                         <TextInput
+                            data-testid="username"
                             placeholder="Username"
                             onChange={(e) => setUsername(e.target.value)}
                         />
                         <TextInput
-                            placeholder="Password"
+                            data-testid="password"
                             type="password"
                             onChange={(e) => setPassword(e.target.value)}
                         />

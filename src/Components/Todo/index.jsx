@@ -4,25 +4,26 @@ import Auth from '../Auth';
 import { v4 as uuid } from 'uuid';
 import List from '../List';
 import { Card, Grid, createStyles } from '@mantine/core';
+import axios from 'axios';
 
 const useStyles = createStyles((theme) => ({
   h1: {
     backgroundColor: theme.colors.gray[8],
     width: '80%',
-    color: 'white',
-    fontSize: '20px',
-    fontWeight: 'bold',
-    // fontFamily: 'apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
-    margin: '16px auto',
-    padding: '16px',
-  },
-  labels: {
-    display: 'flex',
-    padding: '10px',
-  },
-  placeholder: {
-    marginLeft: '5px'
+    color: theme.colors.gray[0],
+    fontSize: theme.fontSizes.lg,
+    margin: 'auto',
+    padding: theme.spacing.md,
+    marginTop: theme.spacing.md,
+    marginBottom: theme.spacing.md,
   }
+  // labels: {
+  //   display: 'flex',
+  //   padding: '10px',
+  // },
+  // placeholder: {
+  //   marginLeft: '5px'
+  // }
 }));
 
 
@@ -35,26 +36,47 @@ const Todo = () => {
   const [incomplete, setIncomplete] = useState([]);
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
-  function addItem(item) {
-    item.id = uuid();
+  async function addItem(item) {
+
+    // item.id = uuid();
     item.complete = false;
-    console.log(item);
+    const config = {
+      baseURL: 'https://api-js401.herokuapp.com/api/v1/todo',
+      method: 'post',
+      data: item
+    };
+    let response = axios(config);
+    console.log('item', response.data);
     setList([...list, item]);
   }
 
-  function deleteItem(id) {
+
+
+  async function deleteItem(id) {
+    await axios.delete(`https://api-js401.herokuapp.com/api/v1/todo/${id}`);
     const items = list.filter(item => item.id !== id);
     setList(items);
   }
 
-  function toggleComplete(id) {
 
-    const items = list.map(item => {
-      if (item.id === id) {
-        item.complete = !item.complete;
-      }
-      return item;
-    });
+  async function toggleComplete(itemToUpdate) {
+
+    itemToUpdate.complete = !itemToUpdate.complete;
+    let config = {
+      baseURL: `https://api-js401.herokuapp.com/api/v1/todo/${itemToUpdate._id}`,
+      method: 'put',
+      data: itemToUpdate
+    }
+    await axios(config);
+
+    let response = await axios.get(`https://api-js401.herokuapp.com/api/v1/todo`);
+    let items = response.data.results;
+    // const items = list.map(item => {
+    //   if (item._id === updatedItem._id) {
+    //     item.complete = !item.complete;
+    //   }
+    //   return item;
+    // });
 
     setList(items);
 
@@ -70,17 +92,25 @@ const Todo = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps 
   }, [list]);
 
+  useEffect(() => {
+    // initial get request for the todos
+    (async () => {
+      let response = await axios.get('https://api-js401.herokuapp.com/api/v1/todo');
+      setList(response.data.results);
+    })()
+  }, []);
+
 
   return (
     <>
       <h1 data-testid="todo-h1" className={classes.h1}>To Do List: {incomplete} items pending</h1>
       <Grid style={{ width: '80%', margin: 'auto' }}>
-        <Grid.Col  xs={12} sm={4}>
+        <Grid.Col xs={12} sm={4}>
 
           {/* leave the form code inside of the Todo Component */}
           <Auth capability="create">
             <Card shadow="sm" padding="lg" radius="md" withBorder>
-              <form  data-testid="form" onSubmit={handleSubmit}>
+              <form data-testid="form" onSubmit={handleSubmit}>
 
                 <h2 data-testid="todo-h2">Add To Do Item </h2>
 
