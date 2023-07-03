@@ -11,25 +11,13 @@ function SettingsProvider({ children }) {
         localStorage.setItem('todo', JSON.stringify({ displayCount, showComplete, sort }));
     }
 
-    // useEffect(() => {
-    //     let storage = JSON.parse(localStorage.getItem('todo'));
-    //     if (storage) {
-    //         setDisplayCount(storage.displayCount);
-    //         setSort(storage.sort);
-    //         setShowComplete(storage.showComplete);
-    //     }
-    // }, []);
+    
     useEffect(() => {
-        let storage = localStorage.getItem('todo');
+        let storage = JSON.parse(localStorage.getItem('todo'));
         if (storage) {
-          try {
-            storage = JSON.parse(storage);
             setDisplayCount(storage.displayCount);
             setSort(storage.sort);
             setShowComplete(storage.showComplete);
-          } catch (error) {
-            console.error('Error parsing localStorage data:', error);
-          }
         }
       }, []);
       
@@ -50,5 +38,6 @@ function SettingsProvider({ children }) {
         </SettingsContext.Provider>
     )
 }
+
 
 export default SettingsProvider;

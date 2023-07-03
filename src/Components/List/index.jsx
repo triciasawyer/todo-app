@@ -11,7 +11,7 @@ function List({ list, toggleComplete, deleteItem }) {
     const {
         displayCount,
         showComplete,
-        // sort,
+        // sort
     } = useContext(SettingsContext);
     const [activePage, setPage] = useState(1);
 
@@ -21,19 +21,18 @@ function List({ list, toggleComplete, deleteItem }) {
     const listStart = displayCount * (activePage - 1);
     const listEnd = listStart + displayCount;
     const displayList = renderableList.slice(listStart, listEnd);
-    // const { classes } = useStyles();
 
     return (
         <>
             {displayList.map(item => (
-                <Card mb='sm' shadow='mad' padding="lg" withBorder key={item.id}>
+                <Card mb='sm' shadow='md' withBorder key={item.id}>
                     <Card.Section withBorder>
                         <Group position="apart">
                             <Group>
                                 <If condition={isLoggedIn && can('update')}>
                                     <Then>
                                         <Badge
-                                            onClick={() => toggleComplete(item.id)}
+                                            onClick={() => toggleComplete(item)}
                                             color={item.complete ? 'red' : 'green'}
                                             variant="filled"
                                             m="3px"
@@ -45,21 +44,20 @@ function List({ list, toggleComplete, deleteItem }) {
                                         <Badge
                                             color={item.complete ? 'red' : 'green'}
                                             variant="filled"
-                                            m="3px">
-                                            {item.complete ? 'complete' : 'Pending'}
-                                        </Badge>
+                                            m="3px"
+                                            >
+                                            {item.complete ? 'Complete' : 'Pending'}
+                                            </Badge>
                                     </Else>
                                 </If>
                                 <Text>{item.assignee}</Text>
                             </Group>
                             <Auth capability="delete">
                                 <CloseButton
-                                    onClick={() => deleteItem(item.id)}
+                                    onClick={() => deleteItem(item._id)}
                                     title="Close ToDo item"
-                                    data-testid="closeToDo"
                                 />
                             </Auth>
-                            <hr />
                         </Group>
                     </Card.Section>
                     <Text mt="sm" align="left">{item.text}</Text>
