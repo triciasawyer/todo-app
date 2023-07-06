@@ -37,24 +37,26 @@ const Todo = () => {
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
   async function addItem(item) {
-
-    // item.id = uuid();
+try {
     item.complete = false;
     const config = {
       baseURL: 'https://api-js401.herokuapp.com/api/v1/todo',
       method: 'post',
       data: item
     };
-    let response = axios(config);
+    let response = await axios(config);
     console.log('item', response.data);
     setList([...list, item]);
+  } catch(error) {
+    console.error('Error adding item:', error);
   }
+}
 
 
 
   async function deleteItem(id) {
     await axios.delete(`https://api-js401.herokuapp.com/api/v1/todo/${id}`);
-    const items = list.filter(item => item.id !== id);
+    const items = list.filter(item => item._id !== id);
     setList(items);
   }
 
@@ -79,7 +81,6 @@ const Todo = () => {
     // });
 
     setList(items);
-
   }
 
 
