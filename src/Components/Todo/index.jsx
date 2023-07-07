@@ -45,8 +45,8 @@ try {
       data: item
     };
     let response = await axios(config);
-    console.log('item', response.data);
-    setList([...list, item]);
+    // console.log('item', response.data);
+    setList([...list, response.data]);
   } catch(error) {
     console.error('Error adding item:', error);
   }
