@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../Hooks/form';
 import Auth from '../Auth';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 import List from '../List';
 import { Card, Grid, createStyles } from '@mantine/core';
 import axios from 'axios';
@@ -37,24 +37,26 @@ const Todo = () => {
   const { handleChange, handleSubmit } = useForm(addItem, defaultValues);
 
   async function addItem(item) {
-
-    // item.id = uuid();
+try {
     item.complete = false;
     const config = {
       baseURL: 'https://api-js401.herokuapp.com/api/v1/todo',
       method: 'post',
       data: item
     };
-    let response = axios(config);
-    console.log('item', response.data);
-    setList([...list, item]);
+    let response = await axios(config);
+    // console.log('item', response.data);
+    setList([...list, response.data]);
+  } catch(error) {
+    console.error('Error adding item:', error);
   }
+}
 
 
 
   async function deleteItem(id) {
     await axios.delete(`https://api-js401.herokuapp.com/api/v1/todo/${id}`);
-    const items = list.filter(item => item.id !== id);
+    const items = list.filter(item => item._id !== id);
     setList(items);
   }
 
@@ -79,7 +81,6 @@ const Todo = () => {
     // });
 
     setList(items);
-
   }
 
 

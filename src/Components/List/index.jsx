@@ -25,7 +25,7 @@ function List({ list, toggleComplete, deleteItem }) {
     return (
         <>
             {displayList.map(item => (
-                <Card mb='sm' shadow='md' withBorder key={item.id}>
+                <Card mb='sm' shadow='md' withBorder key={item._id}>
                     <Card.Section withBorder>
                         <Group position="apart">
                             <Group>
