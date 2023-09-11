@@ -88,15 +88,31 @@ Ryan Gallaway in code review for all labs, really helpful! I also used chat gpt 
 
 In the project directory, you can run:
 
-#### `npm i to install dependencies`
+#### `npm i` to install dependencies
 
-npm i uuid sass
 
-#### `npm start`
+#### `npm start` to run the application
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### `npm test` to launch the test runner in the interactive watch mode
 
-#### `npm test`
+### Functionality
 
-Launches the test runner in the interactive watch mode.
+To check out my webpage, open up my Code sandbox deployment link noted above. You can sign in as an admin, editor, or user, using these logins:
+
+User: `admin`
+
+Pass: `ADMIN`
+</br>
+</br>
+
+User: `editor`
+
+Pass: `EDITOR`
+</br>
+</br>
+
+User: `user`
+
+Pass: `USER`
+
+
