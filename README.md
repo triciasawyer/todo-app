@@ -114,5 +114,3 @@ Pass: `EDITOR`
 User: `user`
 
 Pass: `USER`
-
-

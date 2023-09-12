@@ -16,14 +16,33 @@ const useStyles = createStyles((theme) => ({
     padding: theme.spacing.md,
     marginTop: theme.spacing.md,
     marginBottom: theme.spacing.md,
-  }
-  // labels: {
-  //   display: 'flex',
-  //   padding: '10px',
-  // },
-  // placeholder: {
-  //   marginLeft: '5px'
-  // }
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  label: {
+    marginBottom: theme.spacing.sm,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  input: {
+    padding: theme.spacing.xs,
+    borderRadius: theme.radius.sm,
+    border: `1px solid ${theme.colors.gray[3]}`,
+  },
+  button: {
+    backgroundColor: theme.colors.blue[5],
+    color: theme.colors.gray[0],
+    padding: theme.spacing.sm,
+    border: 'none',
+    cursor: 'pointer',
+    borderRadius: theme.radius.sm,
+    marginTop: theme.spacing.md,
+    '&:hover': {
+      backgroundColor: theme.colors.blue[6],
+    },
+  },
 }));
 
 
@@ -111,27 +130,27 @@ try {
           {/* leave the form code inside of the Todo Component */}
           <Auth capability="create">
             <Card shadow="sm" padding="lg" radius="md" withBorder>
-              <form data-testid="form" onSubmit={handleSubmit}>
+              <form data-testid="form" onSubmit={handleSubmit} className={classes.form}>
 
                 <h2 data-testid="todo-h2">Add To Do Item </h2>
 
-                <label data-testid="todo-label1" className={classes.labels}>
+                <label data-testid="todo-label1" className={classes.label}>
                   <span>To Do Item</span>
-                  <input className={classes.placeholder} onChange={handleChange} name="text" type="text" placeholder="Item Details" />
+                  <input className={classes.input} onChange={handleChange} name="text" type="text" placeholder="Item Details" />
                 </label>
 
-                <label data-testid="todo-label2" className={classes.labels}>
+                <label data-testid="todo-label2" className={classes.label}>
                   <span>Assigned To </span>
-                  <input className={classes.placeholder} onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
+                  <input className={classes.input} onChange={handleChange} name="assignee" type="text" placeholder="Assignee Name" />
                 </label>
 
-                <label data-testid="todo-label3" className={classes.labels}>
+                <label data-testid="todo-label3" className={classes.label}>
                   <span>Difficulty</span>
-                  <input className={classes.placeholder} onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
+                  <input className={classes.input} onChange={handleChange} defaultValue={defaultValues.difficulty} type="range" min={1} max={5} name="difficulty" />
                 </label>
 
                 <label data-testid="todo-label-button">
-                  <button type="submit">Add Item</button>
+                  <button type="submit" className={classes.button}>Add Item</button>
                 </label>
               </form>
             </Card>
