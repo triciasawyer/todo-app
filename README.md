@@ -90,7 +90,6 @@ In the project directory, you can run:
 
 #### `npm i` to install dependencies
 
-
 #### `npm start` to run the application
 
 #### `npm test` to launch the test runner in the interactive watch mode

@@ -6,12 +6,13 @@ const useStyles = createStyles((theme) => ({
   navbar: {
     backgroundColor: theme.colors.blue[7],
     height: '100%',
-    padding: theme.spacing.md,
+    padding: theme.spacing.lg,
   },
   link: {
     color: theme.colors.gray[0],
     fontSize: theme.fontSizes.md,
     textDecoration: 'none',
+    marginLeft: theme.spacing.lg,
   }
 }));
 
