@@ -51,9 +51,11 @@ In Phase 4, this project is finalized by connecting to live servers for login, a
 - Altering the Login Context to use the server for user authentication.
 - Storing authentication tokens in both state and cookies for future reference.
 
-### Links and Resources
+### Deployment
 
-[Code sandbox deployment](https://56gqkc-3000.csb.app/)
+[CodeSandbox](https://56gqkc-3000.csb.app/)
+
+### Links and Resources
 
 [Mantine theming doc](https://mantine.dev/theming/colors/)
 
