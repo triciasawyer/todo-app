@@ -1,72 +1,55 @@
-# Lab 31-34
+# Context API
 
-## Project: Context API
+## Author: Tricia Sawyer
 
-### Author: Tricia Sawyer
+### Project Overview
 
-### Problem Domain
+This project is divided into several phases, each aimed at enhancing the functionality and user experience of a Todo application while improving its production readiness.
 
-- Lab 31 features
+### Phase 1
 
-In Phase 1, we’re going to perform some refactoring of a Todo application built by another team. This application mixes application state and user settings at the top level and passes things around. It was a good proof of concept, but we need to make this production ready.
+In Phase 1, I focus on refactoring an existing Todo application and modularizing it for production use. Key tasks include:
 
-Create a Detailed UML.
-Properly modularize the application into separate components, note the proposed file structure below.
-Implement the Context API to make some basic application settings available to components.
-Show three items by default.
-Hide completed items by default.
-Add the sort word ‘difficulty’ by default.
-Style the application using the Mantine Component API {target:_blank}.
-NOTE: The expectation to style this entire component in one day is likely unrealistic. The recommendation is to implement the required functionality, then systematically begin styling with Mantine. Match the comp image(s) as closely as possible. 80% of the design work will likely take 20% of your time. By the end of the week, being mostly there with style is the goal!
+- Creating a detailed UML diagram.
+- Modularizing the application into separate components with a proposed file structure.
+- Implementing the Context API to provide basic application settings to components.
+- Displaying three items by default.
+- Hiding completed items by default.
+- Adding the default sorting option 'difficulty.'
+- Styling the application using the Mantine Component API.
 
-- Lab 32 features
+### Phase 2
 
-In Phase 2, we’re going to extend the functionality of our application by allowing the user to make some decisions on how they would like the application to function. Specifically, we’ll let them make changes to 2 settings.
+Phase 2 extends the application's functionality by allowing users to customize its behavior. This phase includes:
 
-Implement the Context API to make some basic application settings available to components.
-How many To Do Items to show at once.
-Whether or not to show completed items.
-Hint: if reusing the custom useForm() hook, event validation may be necessary if using any Mantine component other </br>
-than "< TextInput />".
+- Implementing the Context API to make application settings available to components.
+- Allowing users to specify how many To Do items to display at once.
+- Enabling users to choose whether or not to show completed items.
+- Providing a settings form component accessible via the main navigation.
+- Rendering updated settings on the right side of the form.
+- Saving user preferences in Local Storage.
+- Retrieving and applying user preferences from Local Storage during application startup.
 
-Provide the users with a form where they can change the values for those settings.
-This should be given in the form of a new component, perhaps linked to from the main navigation.
-Hint: Use Browser Router to create the page/route/component for this.
-Once settings are updated, render the updated settings to the right of the “form”. Consider using "< Grid />", "< Card />", and "< When />" components.
-Save the users choices in Local Storage.
-Retrieve their preferences from Local Storage and apply them to the application on startup.
+### Phase 3
 
-- Lab 33 features
+Phase 3 introduces user authentication and access control. New user stories include:
 
-In Phase 3, we’d like to extend the functionality of the application by requiring users be logged in to view items and also restrict access based on user type. The user stories from Phases 1, and 2 remain unchanged. For this phase, we are now adding the following new user stories.
+- Allowing users to create new accounts.
+- Enabling user login functionality.
+- Restricting access to To Do items for authenticated users only.
+- Controlling item creation, updates, and deletions based on user type.
+- Implementing role-based access control to determine user permissions.
 
-As a user, I want to provide a way for other users to create new accounts.
+### Phase 4
 
-As a user, I want to provide a way for all users to login to their account.
+In Phase 4, this project is finalized by connecting to live servers for login, authorization, and data access. Key technical requirements include:
 
-As a user, I want to make sure that my To Do items are only viewable to users that have logged in with a valid account.
-
-As a user, I want to ensure that only fellow users that are allowed to “create”, based on their user type, can add new To Do Items.
-
-As a user, I want to ensure that only fellow users that are allowed to “update”, based on their user type, can mark To Do Items complete.
-
-As a user, I want to ensure that only fellow users that are allowed to “delete”, based on their user type, can delete new To Do Items.
-
-- Lab 34 features
-
-In Phase 4, we will finalize the functionality of the application by connecting to live servers for login, authorization, and data access.
-
-Technical Requirements / Notes
-Technical requirements for the core application are unchanged from the prior phases, with the addition of Performing actual HTTP requests with an Authenticated API server:
-
-Alter the Add, Toggle Complete, and Delete functions within your to do application to use your API instead of in memory state.
-Fetch the current list of items from the database on application start.
-Whenever you add/update/delete an item, refresh the state so the user can instantly see the change.
-Consider: Do you re-fetch from the server every time you make a change?
-If so, how?
-If not, how will you stay in sync?
-Alter the Login Context to use the server to login users instead of our mock users list.
-Be sure to store the token in state as well as in a cookie so you can reference it later.
+- Revising the Add, Toggle Complete, and Delete functions to use an Authenticated API server.
+- Fetching the current item list from the database upon application start.
+- Updating the state instantly when adding, updating, or deleting items.
+- Considering synchronization strategies with the server.
+- Altering the Login Context to use the server for user authentication.
+- Storing authentication tokens in both state and cookies for future reference.
 
 ### Links and Resources
 
@@ -78,36 +61,33 @@ Be sure to store the token in state as well as in a cookie so you can reference 
 
 ### Collaborators
 
-Ryan Gallaway in code review for all labs, really helpful! I also used chat gpt to help write some of the tests and debug some issues I was having.
+- Special thanks to Ryan Gallaway for providing valuable feedback during code reviews.
+- Utilized Chat GPT for assistance with test writing and debugging.
 
-### UML
+### UML Diagram
 
-![UML](./assets/lab31-UML.png)
+![UML Diagram](./assets/lab31-UML.png)
 
-### Set up
+### Setup and Functionality
 
-In the project directory, you can run:
+To experience the application, follow these steps:
 
-#### `npm i` to install dependencies
+1. Install project dependencies with `npm i`.
+2. Start the application with `npm start`.
+3. Run tests using `npm test`.
 
-#### `npm start` to run the application
-
-#### `npm test` to launch the test runner in the interactive watch mode
-
-### Functionality
-
-To check out my webpage, open up my Code sandbox deployment link noted above. You can sign in as an admin, editor, or user, using these logins:
+You can access the deployed application in your browser through the provided CodeSandbox deployment link. Log in using the following credentials:
 
 User: `admin`
 
 Pass: `ADMIN`
-</br>
+
 </br>
 
 User: `editor`
 
 Pass: `EDITOR`
-</br>
+
 </br>
 
 User: `user`
